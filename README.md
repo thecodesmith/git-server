@@ -2,12 +2,12 @@
 
 ## Initialize Server
 
-Create the `git` user on the server. Run the [setup script](setup/server.sh) if
+Create a user named `git` on the server. Run the [setup script](setup/server.sh)
 for setting up a server on Ubuntu.
 
 ## Set up local SSH configuration
 
-Add this setting to the local SSH configuration at `~/.ssh/config`:
+Add this setting to your local SSH configuration at `~/.ssh/config`:
 
     Host tcs
         User git
@@ -36,9 +36,9 @@ Test the new Git server with the command:
 This should create a repo called `hello-world` on the `tcs` server. It can now be used
 like any other Git remote, for example pushing from a local repository:
 
-    git remote add tcs tcs:hello-world
-    git push -u tcs master
+    git remote add private tcs:hello-world
+    git push -u private master
 
-Or to clone the repository:
+Or cloning the repository:
 
     git clone tcs:hello-world
