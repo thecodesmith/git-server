@@ -1,0 +1,15 @@
+# Fail on error
+set -e
+
+# Parse first argument on semicolon
+IFS=":" read -ra params <<< "$1"
+
+server=${params[0]}
+repo=${params[1]}
+
+echo "Creating repository $repo on server $server"
+
+# ssh to server, create repo directory, cd into directory, and initialize git repo
+command="ssh ${server} 'set -e; mkdir ${repo}.git; cd ${repo}.git; git --bare init'"
+echo $command
+eval $command
