@@ -2,8 +2,13 @@
 
 import groovy.json.JsonSlurper
 
-username = args[0]
-password = args[1]
+if (args.size()) {
+    username = args[0]
+    password = args[1]
+} else {
+    username = System.getenv('BITBUCKET_USERNAME')
+    password = System.getenv('BITBUCKET_PASSWORD')
+}
 
 authString = "${username}:${password}".getBytes().encodeBase64().toString()
 url = new URL('https://bitbucket.org/api/1.0/user/repositories/')
